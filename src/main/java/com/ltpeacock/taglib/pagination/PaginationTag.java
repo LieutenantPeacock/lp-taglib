@@ -18,6 +18,7 @@ public class PaginationTag extends SimpleTagSupport {
 	private int lastPage;
 	private int maxPages = 10;
 	private PageGenerator pageGenerator = new DefaultPageGenerator();
+	private PageLinkGenerator pageLinkGenerator = new DefaultPageLinkGenerator();
 	private boolean generatePrevLink = true;
 	private boolean generateNextLink = true;
 	private boolean generateFirstLink = true;
@@ -45,29 +46,30 @@ public class PaginationTag extends SimpleTagSupport {
 		out.write("<ul class='" + rootClass + "'>");
 		if (generateFirstLink && (firstPage != currentPage || generateDisabledLinks)) {
 			out.write(getPageHTML(pageClass + " " + firstClass + (currentPage == firstPage ? " " + disabledClass : ""),
-					String.valueOf(firstPage), firstText));
+					firstPage, firstText));
 		}
 		if (generatePrevLink && (firstPage != currentPage || generateDisabledLinks)) {
 			out.write(getPageHTML(pageClass + " " + prevClass + (currentPage == firstPage ? " " + disabledClass : ""),
-					String.valueOf(currentPage - 1), prevText));
+					currentPage - 1, prevText));
 		}
 		for (final PageItem page : pages) {
 			out.write(getPageHTML(pageClass + (page.getNumber() == currentPage ? " " + currentClass : ""),
-					page.getLink(), page.getText()));
+					page.getNumber(), page.getText()));
 		}
 		if (generateNextLink && (lastPage != currentPage || generateDisabledLinks)) {
 			out.write(getPageHTML(pageClass + " " + nextClass + (currentPage == lastPage ? " " + disabledClass : ""),
-					String.valueOf(currentPage + 1), nextText));
+					currentPage + 1, nextText));
 		}
 		if (generateLastLink && (lastPage != currentPage || generateDisabledLinks)) {
 			out.write(getPageHTML(pageClass + " " + lastClass + (currentPage == lastPage ? " " + disabledClass : ""),
-					String.valueOf(lastPage), lastText));
+					lastPage, lastText));
 		}
 		out.write("</ul>");
 	}
 
-	private String getPageHTML(final String cssClass, final String link, final String text) {
-		return "<li class='" + cssClass.trim() + "'><a class='" + pageLinkClass + "' href='" + basePageLink + "/" + link
+	private String getPageHTML(final String cssClass, final int page, final String text) {
+		return "<li class='" + cssClass.trim() + "'><a class='" + pageLinkClass + "' href='" 
+				+ pageLinkGenerator.generateLink(basePageLink, page)
 				+ "'>" + text + "</a></li>";
 	}
 
@@ -166,5 +168,9 @@ public class PaginationTag extends SimpleTagSupport {
 
 	public void setLastClass(String lastClass) {
 		this.lastClass = lastClass;
+	}
+
+	public void setPageLinkGenerator(PageLinkGenerator pageLinkGenerator) {
+		this.pageLinkGenerator = pageLinkGenerator;
 	}
 }
