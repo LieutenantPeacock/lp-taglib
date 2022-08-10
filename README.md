@@ -67,6 +67,11 @@ Attributes are specified on the `lp:pagination` tag with the syntax `attributeNa
 		<td><code>com.ltpeacock.taglib.pagination.DefaultPageGenerator</code></td>
 	</tr>
 	<tr>
+		<td>pageLinkGenerator</td>
+		<td>The <code>com.ltpeacock.taglib.pagination.PageLinkGenerator</code> object to use for generating page links.</td>
+		<td><code>com.ltpeacock.taglib.pagination.DefaultPageLinkGenerator</code></td>
+	</tr>
+	<tr>
 		<td>generatePrevLink</td>
 		<td>Whether or not to generate a link (at the start of the list of pages) pointing to the previous page. The value should be a boolean (either <code>true</code> or <code>false</code>).</td>
 		<td><code>true</code></td>
