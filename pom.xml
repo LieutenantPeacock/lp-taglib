@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.lt-peacock</groupId>
 	<artifactId>lp-taglib</artifactId>
-	<version>1.0.1</version>
+	<version>1.0.2-SNAPSHOT</version>
 	<name>Lt. Peacock Taglib</name>
 	<description>JSP Taglib that provides some utility features.</description>
 	<url>http://lp-taglib.lt-peacock.com</url>
@@ -24,7 +24,7 @@
 		<connection>scm:git:git://github.com/LieutenantPeacock/lp-taglib.git</connection>
 		<developerConnection>scm:git:file://d:/LocRepo/lp-taglib.git</developerConnection>
 		<url>https://github.com/LieutenantPeacock/lp-taglib</url>
-		<tag>lp-taglib-1.0.1</tag>
+		<tag>HEAD</tag>
 	</scm>
 	<distributionManagement>
 		<snapshotRepository>
