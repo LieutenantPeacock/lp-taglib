@@ -10,7 +10,7 @@ This project is available as a [Maven artifact](https://search.maven.org/artifac
 <dependency>
     <groupId>com.lt-peacock</groupId>
     <artifactId>lp-taglib</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
 </dependency>
 ```
 
